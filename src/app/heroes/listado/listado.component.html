@@ -1,25 +1,16 @@
 <p>Listado de Heroes</p>
 
-<div *ngIf="!heroeBorrado;">
-    <h3>No se ha borrado nada</h3>
+
+<div *ngIf="heroeBorrado; else noBorrado ">
+    <h3>Ultimo heroe borrado:  <small >{{heroeBorrado}}</small></h3>
+   
 </div>
 
-<!-- //todo el div aparecera solo si *ngIf es true -->
-<div *ngIf="heroeBorrado !==''">
-    <h3>Heroes Borrados del array</h3>
-    <span *ngFor = "let heroeEliminado of heroesEliminados">{{heroeEliminado}}</span>
-    <!-- <span >asdasd-{{heroeBorrado}}</span> -->
-</div>
+<!-- Referencias locales #noBorrado no existen en el lado de .ts, solo en el html -->
+<ng-template #noBorrado>
+    <h3>No se ha borrado nada.</h3>
+</ng-template>
 
-<button (click)="borrarHeroe()"> 
-    Borrar
-</button>
-
-
-<div *ngIf="heroeBorrado !== ''">
-    <h3>Heroe Borrado ver ultimo</h3>
-    <span >{{heroeBorrado}}</span>
-</div>
 
 <button (click)="borrarHeroe()"> 
     Borrar
