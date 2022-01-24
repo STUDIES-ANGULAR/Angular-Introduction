@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
+import { DbzService } from '../services/dbz.service';
 
 
 
@@ -9,37 +10,24 @@ import { Personaje } from '../interfaces/dbz.interface';
 })
 export class MainPageComponent {
 
-  personajes: Personaje[] = [
-    {
-      nombre: 'Goku',
-      poder: 15000
-    },
-    {
-     nombre:'Vegeta' ,
-     poder: 8000
-    }
-  ];
-
   nuevo: Personaje = {
-    nombre: '',
-    poder: 0
+    nombre: 'Maestro Roshi',
+    poder: 1300
   }
 
+  //hacemos el llamado al servicio a traves de una inyeccion de depencencia
+  //constructor(private dbzService: DbzService){}
+  constructor(){}
+  
+  // get personajes (): Personaje[]{
+  //   return this.dbzService.personajes
+  // }
 
-  agregar() {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    }else{
-      this.personajes.push(this.nuevo)
-    }
-    console.log(this.nuevo);
-    this.nuevo= {nombre: '', poder: 0}
-  }
+  // agregarNuevoPersonaje(argumento: Personaje) {
+  //     this.personajes.push(argumento);
+  // }
 
-  /*agregar(event:any){
-    event.preventDefault(); //prevee el comportamiento por defecto que tiene el submit de un formulario
-    console.log('hey..')
-  }*/
+  
 
 
 }
